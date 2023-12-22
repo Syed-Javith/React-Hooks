@@ -1,16 +1,26 @@
+import { useState } from 'react';
 import './App.css';
+import authContext from './AuthContext';
 import UseEffect from './UseEffect';
 import UseRef from './UseRef';
 import UseState from './UseState';
+import Child from './Child';
+import AnotherChild from './AnotherChild';
 
 function App() {
 
+  const [user,setUser] = useState(null); 
+
   return (
-     <div className="App">
-      <UseState />
+     <authContext.Provider value={{user , setUser} }>
+      <div className="App">
+      {/* <UseState />
       <UseEffect />
-      <UseRef />
-    </div>
+      <UseRef /> */}
+      <Child/>
+      <AnotherChild />
+      </div>
+     </authContext.Provider>
   );
 }
 
